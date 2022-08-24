@@ -1,0 +1,50 @@
+
+<div class="container mx-auto">
+    <h1 class="text-center font-bold text-cyan-300 text-4xl p-5">Welcome to Contact Page</h1>
+    <div class="flex justify-center">
+        <a href="/contact/add" class="py-3 px-4 rounded-full bg-sky-300 text-slate-700 text-xl font-normal mb-8">Tambah Contact</a>
+    </div>
+    <% if (msg.length != 0) { %>
+        <div class=" w-1/4 text-center bg-lime-300 py-3 rounded-md flex justify-center mx-auto mb-1">
+            <h1><%= msg %> </h1>
+        </div>
+    <% } %>
+    
+    <div class="flex justify-center">
+        <table class="table-auto shadow-2xl bg-slate-50 border-2 border-collapse border-slate-300 rounded-lg overflow-hidden">
+            <thead>
+              <tr>
+                <th class="border border-slate-300 p-3">
+                    Nomor
+                </th>
+                <th class="border border-slate-300 p-3">Name</th>
+                <th class="border border-slate-300 p-3">NoHp</th>
+                <th class="border border-slate-300 p-3">Info</th>
+              </tr>
+            </thead>
+            <tbody> 
+              <% if (contacts.length == 0 ) { %>
+                <tr class="">
+                    <td class="text-slate-50 font-semibol p-3 bg-pink-700 w-full px-36"> maaf tidak ada data yang tersedia</td>
+                </tr>
+              <% } else { %>
+               <% contacts.forEach((contact, i) => { %>
+                <tr>
+                    <td class="border border-slate-300 p-3">
+                        <%= i+1 %> 
+                    </td>
+                    <td class="border border-slate-300 p-3"><%= contact.nama %> 
+                    </td>
+                    <td class="border border-slate-300 p-3"><%= contact.noHp %></td>
+                    <td class="border border-slate-300 p-3"><a href="/contact/<%= contact.nama %> " class="h-2 w-4 p-1 px-2 rounded-full bg-lime-300 border-2 hover:bg-lime-600">Detail</a></td>
+                </tr>
+                <% }) %>
+            <% } %>
+               
+                
+                
+              
+            </tbody>
+        </table>    
+    </div>
+</div>

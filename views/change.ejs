@@ -1,0 +1,38 @@
+<div class="container mx-auto pt-10">
+    <h1 class="capitalize text-3xl font-medium text-sky-300 text-center">form Ubah contact</h1>
+</div>
+<div class="container mx-auto flex justify-center py-5">
+    <% if (typeof errors != "undefined") { %>
+        <ul class="bg-pink-300 rounded-lg text-pink-900 capitalize py-2 px-4">
+            <% errors.forEach(err => { %>
+                <li><%= err.msg %> </li>
+            <% }) %>
+        </ul>
+    <% } %>
+</div>
+<div class="container mx-auto flex justify-center py-10">
+    <div class="w-64 h-auto shadow-xl rounded-lg flex justify-center bg-slate-600">
+        <form method="post" action="/contact?_method=PUT" class="px-5 py-10">
+            <div>
+                <input type="hidden" name="_id" value="<%= contact._id %>">
+                <input type="hidden" name="oldNama" value="<%= contact.oldNama || contact.nama %>">
+                <label for="nama" class="text-sky-300 font-normal capitalize">nama</label>
+                
+                <input type="text" name="nama" id="nama" class="outline-none rounded-md border border-slate-400 py-3 px-4 focus:border focus:border-sky-300 focus:ring-1 focus:ring-sky-300" value="<%= contact.nama %>">
+            </div>
+            <div>
+                <label for="noHp" class="text-sky-300 font-normal capitalize">noHp</label>
+                
+                <input type="text" name="noHp" id="noHp" class="outline-none rounded-md border border-slate-400 py-3 px-4 focus:border focus:border-sky-300 focus:ring-1 focus:ring-sky-300" value="<%= contact.noHp%>">
+            </div>
+            <div>
+                <label for="email" class="text-sky-300 font-normal capitalize">email</label>
+                
+                <input type="email" name="email" id="email" class="outline-none rounded-md border border-slate-400 py-3 px-4 focus:border focus:border-sky-300 focus:ring-1 focus:ring-sky-300" value="<%= contact.email %>">
+            </div>
+            <div class="py-3">
+                <button class="py-2 px-4 rounded-xl bg-sky-400 text-slate-900 font-semibold hover:bg-sky-200 transition ease-in-out duration-500">Ubah contact</button>
+            </div>
+        </form>
+    </div>
+</div>
